@@ -51,6 +51,7 @@ public class AddNewProgram extends JFrame {
 		textField = new JTextField();
 		contentPane.add(textField);
 		textField.setColumns(10);
+		setVisible(true);
 	}
 
 }

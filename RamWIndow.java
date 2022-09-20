@@ -12,6 +12,8 @@ import javax.swing.SwingConstants;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JComboBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class RamWIndow extends JFrame {
 
@@ -47,6 +49,11 @@ public class RamWIndow extends JFrame {
 		menuBar.add(mnNewMenu);
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Agregar Programa");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AddNewProgram aNP = new AddNewProgram();
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
