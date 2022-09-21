@@ -16,28 +16,15 @@ import java.awt.event.ActionEvent;
 public class SizeSelection extends JFrame {
 
 	private JPanel contentPane;
+	private JButton btnNewButton;
 	private JTextField textField;
+	public Ram selectedRam;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SizeSelection frame = new SizeSelection();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
-	public SizeSelection() {
+	public SizeSelection(Ram selectedType) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -45,26 +32,31 @@ public class SizeSelection extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		JLabel lblNewLabel = new JLabel("Seleccione el tamaño de la memoria RAM");
+		this.selectedRam = selectedType;
+		
+		JLabel lblNewLabel = new JLabel("Seleccione");
 		lblNewLabel.setFont(new Font("Khmer Sangam MN", Font.PLAIN, 21));
 		lblNewLabel.setForeground(Color.MAGENTA);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(lblNewLabel, BorderLayout.NORTH);
 		
-		textField = new JTextField();
-		contentPane.add(textField, BorderLayout.CENTER);
-		textField.setColumns(10);
+
 		
-		JButton btnNewButton = new JButton("Siguiente");
+		JLabel lblNewLabel_1 = new JLabel("El tamaño debe estar dado en GB");
+		contentPane.add(lblNewLabel_1, BorderLayout.WEST);
+		
+		btnNewButton = new JButton("Siguienye");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RamWIndow rw = new RamWIndow();
+				RamWIndow rw = new RamWIndow(selectedRam, Integer.parseInt(textField.getText()));
+				
 			}
 		});
 		contentPane.add(btnNewButton, BorderLayout.SOUTH);
 		
-		JLabel lblNewLabel_1 = new JLabel("El tamaño debe estar dado en GB");
-		contentPane.add(lblNewLabel_1, BorderLayout.WEST);
+		textField = new JTextField();
+		contentPane.add(textField, BorderLayout.EAST);
+		textField.setColumns(10);
 		setVisible(true);
 	}
 

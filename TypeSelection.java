@@ -13,24 +13,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class TypeSelection extends JFrame {
+	
+	public Ram ram = new Ram();
+	
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TypeSelection frame = new TypeSelection();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
@@ -49,19 +38,31 @@ public class TypeSelection extends JFrame {
 		contentPane.add(lblNewLabel, BorderLayout.NORTH);
 		
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("DDR");
+		rdbtnNewRadioButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ram.setType("DDR");
+	
+			}
+		});
 		contentPane.add(rdbtnNewRadioButton, BorderLayout.WEST);
 		
 		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("SSR");
+		rdbtnNewRadioButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ram.setType("SSR");
+			}
+		});
 		contentPane.add(rdbtnNewRadioButton_1, BorderLayout.EAST);
 		
 		JButton nextButton1 = new JButton("Siguiente");
 		nextButton1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SizeSelection sw = new SizeSelection();
+				SizeSelection sw = new SizeSelection(ram);
 			}
 		});
 		contentPane.add(nextButton1, BorderLayout.SOUTH);
 		setVisible(true);
+		
 	}
 
 }
