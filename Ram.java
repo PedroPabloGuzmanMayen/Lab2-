@@ -4,8 +4,8 @@ public class Ram{
     private String type;
     private int initial_space;
     private int total_space;
-    public ArrayList<Program> process; 
-    public ArrayList<Program> waitlist;
+    private int time;
+
     public String getType() {
         return type;
     }
@@ -24,17 +24,11 @@ public class Ram{
     public void setTotal_space(int total_space) {
         this.total_space = total_space;
     }
-    public ArrayList<Program> getProcess() {
-        return process;
+    public int getTime() {
+    	return time;
     }
-    public void setProcess(ArrayList<Program> process) {
-        this.process = process;
-    }
-    public ArrayList<Program> getWaitlist() {
-        return waitlist;
-    }
-    public void setWaitlist(ArrayList<Program> waitlist) {
-        this.waitlist = waitlist;
+    public void setTime(int time) {
+    	this.time = time;
     }
 
 }

@@ -14,7 +14,7 @@ import java.awt.event.ActionEvent;
 
 public class TypeSelection extends JFrame {
 	
-	public Ram ram = new Ram();
+	String type;
 	
 
 	private JPanel contentPane;
@@ -31,38 +31,37 @@ public class TypeSelection extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		setVisible(true);
 		
-		JLabel lblNewLabel = new JLabel("Escoja el tipo de la memoria RAM");
-		lblNewLabel.setFont(new Font("Geeza Pro", Font.PLAIN, 26));
+		JLabel lblNewLabel = new JLabel("Seleccione el tipo de memoria Ram");
+		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 23));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(lblNewLabel, BorderLayout.NORTH);
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("DDR");
+		JRadioButton rdbtnNewRadioButton = new JRadioButton("SDR");
 		rdbtnNewRadioButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ram.setType("DDR");
-	
+				type = "SSR";
 			}
 		});
 		contentPane.add(rdbtnNewRadioButton, BorderLayout.WEST);
 		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("SSR");
+		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("DDR");
 		rdbtnNewRadioButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ram.setType("SSR");
+				type = "DDR";
 			}
 		});
 		contentPane.add(rdbtnNewRadioButton_1, BorderLayout.EAST);
 		
-		JButton nextButton1 = new JButton("Siguiente");
-		nextButton1.addActionListener(new ActionListener() {
+		JButton btnNewButton = new JButton("Siguiente");
+		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SizeSelection sw = new SizeSelection(ram);
+				SizeSelection sS = new SizeSelection(type);
 			}
 		});
-		contentPane.add(nextButton1, BorderLayout.SOUTH);
-		setVisible(true);
-		
+		contentPane.add(btnNewButton, BorderLayout.SOUTH);
 	}
+
 
 }

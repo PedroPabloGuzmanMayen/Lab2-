@@ -18,7 +18,7 @@ import java.awt.event.ActionEvent;
 public class RamWIndow extends JFrame {
 
 	private JPanel contentPane;
-	Ram ram;
+	Ram ram = new Ram();
 	int size;
 	Program program = new Program(); 
 
@@ -26,23 +26,21 @@ public class RamWIndow extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public void SetParameters(Ram selectedRam, int selectedSize) {
-		this.ram = selectedRam;
-		this.size = selectedSize;
-	}
+
 	
 	
 	
-	public RamWIndow(Ram selectedRam, int selectedSize) {
+	public RamWIndow(String type, int time, int size) {
+		this.ram.setType(type);
+		this.ram.setTime(time);
+		this.ram.setTotal_space(size);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		setVisible(true);
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		this.ram = selectedRam;
-		this.size = selectedSize;
-		
+
 		JMenu mnNewMenu = new JMenu("Opciones" + ram.getType());
 		menuBar.add(mnNewMenu);
 		
