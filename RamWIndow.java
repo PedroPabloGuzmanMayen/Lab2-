@@ -14,82 +14,58 @@ import java.awt.Font;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JButton;
 
 public class RamWIndow extends JFrame {
 
 	private JPanel contentPane;
-	Ram ram = new Ram();
-	int size;
-	Program program = new Program();
-	RamWIndow myselfRamWindos;
 
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					RamWIndow frame = new RamWIndow();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	/**
 	 * Create the frame.
 	 */
-
-	
-	
-	
-	public RamWIndow(String type, int time, int size) {
-		this.ram.setType(type);
-		this.ram.setTime(time);
-		this.ram.setTotal_space(size);
+	public RamWIndow() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		setVisible(true);
+		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
-		myselfRamWindos = this;
 		
-
-		JMenu mnNewMenu = new JMenu("Opciones" + ram.getType());
+		JMenu mnNewMenu = new JMenu("Opciones");
 		menuBar.add(mnNewMenu);
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Agregar Programa");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AddNewProgram aNP = new AddNewProgram();
-				aNP.setLocation( (int) (myselfRamWindos.getLocation().getX() + myselfRamWindos.getSize().width), (int) (myselfRamWindos.getLocation().getY()));
 			}
 		});
-
-
 		mnNewMenu.add(mntmNewMenuItem);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(null);
+		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		JLabel lblNewLabel = new JLabel("Emulador " + ram.getType() + " " + size);
+		JLabel lblNewLabel = new JLabel("Emulador ");
 		lblNewLabel.setFont(new Font("Futura", Font.PLAIN, 23));
 		lblNewLabel.setBackground(Color.BLUE);
-		lblNewLabel.setForeground(Color.MAGENTA);
+		lblNewLabel.setForeground(new Color(30, 144, 255));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(lblNewLabel, BorderLayout.NORTH);
-		
-		JLabel lblNewLabel_1 = new JLabel("Emulador de memoria Ram");
-		lblNewLabel_1.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		lblNewLabel_1.setForeground(Color.MAGENTA);
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(79, 6, 298, 16);
-		contentPane.add(lblNewLabel_1);
-		
-		JButton btnNewButton = new JButton("Comenzar simulación");
-		btnNewButton.setFont(new Font("Lucida Grande", Font.PLAIN, 8));
-		btnNewButton.setBounds(168, 34, 117, 29);
-		contentPane.add(btnNewButton);
-		
-		JLabel lblNewLabel_2 = new JLabel("Tiempo:");
-		lblNewLabel_2.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
-		lblNewLabel_2.setBounds(6, 0, 61, 16);
-		contentPane.add(lblNewLabel_2);
-		
-		JLabel lblNewLabel_3 = new JLabel("Ciclos:");
-		lblNewLabel_3.setFont(new Font("Lucida Grande", Font.PLAIN, 8));
-		lblNewLabel_3.setBounds(6, 28, 61, 16);
-		contentPane.add(lblNewLabel_3);
 		setVisible(true);
 
 	}

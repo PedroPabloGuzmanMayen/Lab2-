@@ -53,7 +53,8 @@ public class MainWindow extends JFrame {
 		contentPane.add(welcomeLabel, BorderLayout.NORTH);
 		
 		JButton startButton = new JButton("Comenzar");
-		startButton.setBackground(Color.GREEN);
+		startButton.setFont(new Font("Tahoma", Font.PLAIN, 23));
+		startButton.setBackground(new Color (204,204,204));
 		startButton.setForeground(Color.BLUE);
 		startButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
