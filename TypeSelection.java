@@ -13,24 +13,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class TypeSelection extends JFrame {
+	
+	String type;
+	
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TypeSelection frame = new TypeSelection();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
@@ -42,26 +31,37 @@ public class TypeSelection extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		setVisible(true);
 		
-		JLabel lblNewLabel = new JLabel("Escoja el tipo de la memoria RAM");
-		lblNewLabel.setFont(new Font("Geeza Pro", Font.PLAIN, 26));
+		JLabel lblNewLabel = new JLabel("Seleccione el tipo de memoria Ram");
+		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 23));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(lblNewLabel, BorderLayout.NORTH);
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("DDR");
-		contentPane.add(rdbtnNewRadioButton, BorderLayout.WEST);
-		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("SSR");
-		contentPane.add(rdbtnNewRadioButton_1, BorderLayout.EAST);
-		
-		JButton nextButton1 = new JButton("Siguiente");
-		nextButton1.addActionListener(new ActionListener() {
+		JRadioButton rdbtnNewRadioButton = new JRadioButton("SDR");
+		rdbtnNewRadioButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SizeSelection sw = new SizeSelection();
+				type = "SSR";
 			}
 		});
-		contentPane.add(nextButton1, BorderLayout.SOUTH);
-		setVisible(true);
+		contentPane.add(rdbtnNewRadioButton, BorderLayout.WEST);
+		
+		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("DDR");
+		rdbtnNewRadioButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				type = "DDR";
+			}
+		});
+		contentPane.add(rdbtnNewRadioButton_1, BorderLayout.EAST);
+		
+		JButton btnNewButton = new JButton("Siguiente");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SizeSelection sS = new SizeSelection(type);
+			}
+		});
+		contentPane.add(btnNewButton, BorderLayout.SOUTH);
 	}
+
 
 }

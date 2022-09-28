@@ -12,60 +12,100 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JRadioButton;
 
 public class SizeSelection extends JFrame {
 
 	private JPanel contentPane;
+	private JButton btnNewButton;
 	private JTextField textField;
+	public String type;
+	public int size;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SizeSelection frame = new SizeSelection();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
-	public SizeSelection() {
+	public SizeSelection(String type) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
+		setVisible(true);
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
+
+		contentPane.setLayout(null);
 		setContentPane(contentPane);
+		this.type = type;
 		
-		JLabel lblNewLabel = new JLabel("Seleccione el tamaño de la memoria RAM");
-		lblNewLabel.setFont(new Font("Khmer Sangam MN", Font.PLAIN, 21));
-		lblNewLabel.setForeground(Color.MAGENTA);
+		JLabel lblNewLabel = new JLabel("Seleccione el tamaño de la memoria Ram");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		contentPane.add(lblNewLabel, BorderLayout.NORTH);
+		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		lblNewLabel.setBounds(16, 6, 417, 39);
+		contentPane.add(lblNewLabel);
 		
-		textField = new JTextField();
-		contentPane.add(textField, BorderLayout.CENTER);
-		textField.setColumns(10);
-		
-		JButton btnNewButton = new JButton("Siguiente");
-		btnNewButton.addActionListener(new ActionListener() {
+		JRadioButton rdbtnNewRadioButton = new JRadioButton("4GB");
+		rdbtnNewRadioButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RamWIndow rw = new RamWIndow();
+				size = 4000;
+				
 			}
 		});
-		contentPane.add(btnNewButton, BorderLayout.SOUTH);
+		rdbtnNewRadioButton.setBounds(6, 76, 141, 23);
+		contentPane.add(rdbtnNewRadioButton);
 		
-		JLabel lblNewLabel_1 = new JLabel("El tamaño debe estar dado en GB");
-		contentPane.add(lblNewLabel_1, BorderLayout.WEST);
-		setVisible(true);
-	}
+		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("8GB");
+		rdbtnNewRadioButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				size =8000; 
+			}
+		});
+		rdbtnNewRadioButton_1.setBounds(150, 76, 141, 23);
+		contentPane.add(rdbtnNewRadioButton_1);
+		
+		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("16GB");
+		rdbtnNewRadioButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				size = 16000;
+			}
+		});
+		rdbtnNewRadioButton_2.setBounds(6, 169, 141, 23);
+		contentPane.add(rdbtnNewRadioButton_2);
+		
+		JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("12GB");
+		rdbtnNewRadioButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				size = 12000;
+			}
+		});
+		rdbtnNewRadioButton_3.setBounds(303, 76, 141, 23);
+		contentPane.add(rdbtnNewRadioButton_3);
+		
+		JRadioButton rdbtnNewRadioButton_4 = new JRadioButton("32GB");
+		rdbtnNewRadioButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				size = 32000;
+			}
+		});
+		rdbtnNewRadioButton_4.setBounds(150, 169, 141, 23);
+		contentPane.add(rdbtnNewRadioButton_4);
+		
+		JRadioButton rdbtnNewRadioButton_5 = new JRadioButton("64GB");
+		rdbtnNewRadioButton_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				size = 64000;
+			}
+		});
+		rdbtnNewRadioButton_5.setBounds(303, 169, 141, 23);
+		contentPane.add(rdbtnNewRadioButton_5);
+		
+		JButton btnNewButton_1 = new JButton("Siguiente");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TimeSelection ts = new TimeSelection(type, size);
+				
+			}
+		});
+		btnNewButton_1.setBounds(161, 226, 117, 29);
+		contentPane.add(btnNewButton_1);
 
+	}
 }
