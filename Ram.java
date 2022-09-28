@@ -5,6 +5,8 @@ public class Ram{
     private int initial_space;
     private int total_space;
     private int time;
+    public ArrayList<Integer> process; 
+    public ArrayList<Integer> waitlist;
 
     public String getType() {
         return type;
