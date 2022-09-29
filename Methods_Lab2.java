@@ -2,8 +2,7 @@ import java.util.ArrayList;
 
 public class Methods_Lab2 {
 	
-    public ArrayList<Integer> process; 
-    public ArrayList<Integer> waitlist;
+    
     
 
 	
@@ -24,7 +23,7 @@ public class Methods_Lab2 {
 	}
 	public void GenerateProcessList(int totalBlocks) {
 		for (int i =0; i < totalBlocks +1; i++) {
-			process.add(0);
+			
 		}
 
 	}

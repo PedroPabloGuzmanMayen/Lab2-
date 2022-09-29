@@ -15,14 +15,18 @@ import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
+import javax.swing.Timer;
+import javax.swing.JOptionPane;
 
 public class RamWIndow extends JFrame {
 
 	private JPanel contentPane;
 	Ram ram = new Ram();
 	int size;
-	Program program = new Program();
+	Program program;
 	RamWIndow myselfRamWindos;
+	Timer timer;
+	Clock clock;
 
 
 	/**
@@ -37,12 +41,30 @@ public class RamWIndow extends JFrame {
 		this.ram.setTime(time);
 		this.ram.setTotal_space(size);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(500, 500, 500, 500);
 		setVisible(true);
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
-		myselfRamWindos = this;
-		
+		JLabel lblNewLabel_2 = new JLabel("Tiempo:");
+		lblNewLabel_2.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
+		lblNewLabel_2.setBounds(6, 0, 61, 16);
+		contentPane.add(lblNewLabel_2);
+		JLabel lblNewLabel_3 = new JLabel("Ciclos:");
+		lblNewLabel_3.setFont(new Font("Lucida Grande", Font.PLAIN, 8));
+		lblNewLabel_3.setBounds(6, 28, 61, 16);
+		contentPane.add(lblNewLabel_3);
+		setVisible(true);
+		//myselfRamWindos = this;
+		clock = new Clock();
+		timer = new Timer (1000, new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e){
+				clock.work(ram.getTime());
+				lblNewLabel_2.setText("Tiempo: " + "00: " + clock.getSeconds());
+				lblNewLabel_3.setText("Ciclos: " + clock.getCycles());
+				
+			}
+		});
 
 		JMenu mnNewMenu = new JMenu("Opciones" + ram.getType());
 		menuBar.add(mnNewMenu);
@@ -50,8 +72,13 @@ public class RamWIndow extends JFrame {
 		JMenuItem mntmNewMenuItem = new JMenuItem("Agregar Programa");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AddNewProgram aNP = new AddNewProgram();
-				aNP.setLocation( (int) (myselfRamWindos.getLocation().getX() + myselfRamWindos.getSize().width), (int) (myselfRamWindos.getLocation().getY()));
+				program = new Program();
+				program.setName(JOptionPane.showInputDialog("Ingrese el nombre del programa"));
+				program.setName(JOptionPane.showInputDialog("Ingrese el espacio del programa (en MB)"));
+				ram.getWaitlist().add(program);
+				
+				//AddNewProgram aNP = new AddNewProgram();
+				//aNP.setLocation( (int) (myselfRamWindos.getLocation().getX() + myselfRamWindos.getSize().width), (int) (myselfRamWindos.getLocation().getY()));
 			}
 		});
 
@@ -77,20 +104,16 @@ public class RamWIndow extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		
 		JButton btnNewButton = new JButton("Comenzar simulación");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				timer.start();
+			}
+		});
 		btnNewButton.setFont(new Font("Lucida Grande", Font.PLAIN, 8));
 		btnNewButton.setBounds(168, 34, 117, 29);
 		contentPane.add(btnNewButton);
 		
-		JLabel lblNewLabel_2 = new JLabel("Tiempo:");
-		lblNewLabel_2.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
-		lblNewLabel_2.setBounds(6, 0, 61, 16);
-		contentPane.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_3 = new JLabel("Ciclos:");
-		lblNewLabel_3.setFont(new Font("Lucida Grande", Font.PLAIN, 8));
-		lblNewLabel_3.setBounds(6, 28, 61, 16);
-		contentPane.add(lblNewLabel_3);
-		setVisible(true);
 
 	}
 

@@ -5,8 +5,15 @@ public class Ram{
     private int initial_space;
     private int total_space;
     private int time;
+    private int blocks;
     public ArrayList<Integer> process; 
-    public ArrayList<Integer> waitlist;
+    public ArrayList<Program> waitlist;
+    
+    public Ram(){
+    	process = new ArrayList<Integer>();
+    	waitlist = new ArrayList<Program>();
+    	
+    }
 
     public String getType() {
         return type;
@@ -31,6 +38,13 @@ public class Ram{
     }
     public void setTime(int time) {
     	this.time = time;
+    }
+    public ArrayList<Program> getWaitlist() {
+    	return waitlist;
+    	
+    }
+    public ArrayList<Integer> getProcess(){
+    	return process;
     }
 
 }

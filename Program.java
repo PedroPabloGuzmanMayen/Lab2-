@@ -2,6 +2,7 @@
 public class Program {
     private int space;
     private String name;
+    private int totalBlocks = space;
   
     private int id;
     public int getSpace() {
